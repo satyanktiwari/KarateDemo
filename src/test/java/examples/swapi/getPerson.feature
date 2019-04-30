@@ -8,7 +8,7 @@ Feature: Sample karate demo script using swapi
     #give the path that you want to test
     Given path  'people'
 
-    #specify the type
+    #specify the method
     When method Get
 
     #expected status
@@ -25,10 +25,10 @@ Feature: Sample karate demo script using swapi
     And match jsvariable contains {name: 'Luke Skywalker'}
     And match jsvariable.gender == 'male'
 
-#    This will fail due to mismatch in name and the steps after this will be skipped
+#    Below will fail due to mismatch in name and the steps after this will be skipped
 #    OR match jsvariable contains {name: 'Lukey Skywalker'}
 
-#    #This will fail due to mismatch in gender
+#    #Below will fail due to mismatch in gender
 #    And match jsvariable.gender == 'female'
 
 # Verify that the URL available in the response is up and returns correct response
@@ -52,7 +52,7 @@ Feature: Sample karate demo script using swapi
     # Match the responses
     * match filmyResponse == film1response
 
-    * def info = karate.info
-    * print 'info:', info
+ #   * def info = karate.info
+  #     * print 'info:', info
 
 

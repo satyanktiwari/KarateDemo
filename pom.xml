@@ -11,7 +11,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <maven.compiler.version>3.6.0</maven.compiler.version>
-        <karate.version>0.7.0</karate.version>
+        <karate.version>0.9.2</karate.version>
+        <gatling.plugin.version>3.0.2</gatling.plugin.version>
     </properties>
 
     <dependencies>
@@ -33,6 +34,34 @@
             <version>3.8.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.intuit.karate</groupId>
+            <artifactId>karate-core</artifactId>
+            <version>${karate.version}</version>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>io.gatling.highcharts</groupId>-->
+            <!--<artifactId>gatling-charts-highcharts</artifactId>-->
+            <!--<version>3.0.2</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.scala-lang</groupId>-->
+            <!--<artifactId>scala-library</artifactId>-->
+            <!--<version>2.12.3</version>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.intuit.karate</groupId>-->
+            <!--<artifactId>karate-netty</artifactId>-->
+            <!--<version>${karate.version}</version>-->
+            <!--<scope>test</scope>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>com.intuit.karate</groupId>
+            <artifactId>karate-gatling</artifactId>
+            <version>${karate.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -41,6 +70,7 @@
                 <directory>src/test/java</directory>
                 <excludes>
                     <exclude>**/*.java</exclude>
+                    <!--<exclude>**/*.scala</exclude>-->
                 </excludes>
             </testResource>
         </testResources>
@@ -55,6 +85,28 @@
                     <target>${java.version}</target>
                     <compilerArgument>-Werror</compilerArgument>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>io.gatling</groupId>
+                <artifactId>gatling-maven-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <simulationsFolder>src/test/java</simulationsFolder>
+                    <includes>
+                        <include>gatling.SwapiSimulation</include>
+                    </includes>
+                    <jvmArgs>
+                        <jvmArg>-Dfile.encoding=UTF-8</jvmArg>
+                    </jvmArgs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
