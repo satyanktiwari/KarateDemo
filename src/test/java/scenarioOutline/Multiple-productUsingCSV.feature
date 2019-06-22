@@ -1,7 +1,7 @@
 Feature: scenario outline using a dynamic table
   from a csv file
   Background:
-    * url 'http://192.168.1.105:3030'
+    * url 'http://192.168.1.102:3030'
 
   Scenario Outline: product name: <name>
     Given path '/products'
