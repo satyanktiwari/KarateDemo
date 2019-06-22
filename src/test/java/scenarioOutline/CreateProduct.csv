@@ -1,0 +1,5 @@
+name,type,price,shipping,upc,description,manufacturer,model,url,image
+KT5,KTtype5,3,1234569,KTupc4,KT Demo description 5,KT manufacturer5,KTmodel5,url,image
+KT6,KTtype6,3,1234569,KTupc5,KT Demo description 6,KT manufacturer6,KTmodel6,url,image
+KT7,KTtype7,3,1234569,KTupc6,KT Demo description 7,KT manufacturer7,KTmodel7,url,image
+KT8,KTtype8,3,1234569,KTupc7,KT Demo description 8,KT manufacturer8,KTmodel8,url,image
