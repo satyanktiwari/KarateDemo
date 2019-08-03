@@ -1,0 +1,13 @@
+[
+  { "type": "chromedriver",
+    "port": 9917,
+    "executable": "E:\\intellij2018\\KarateDemo\\src\\test\\java\\driver\\chromedriver.exe",
+    "showDriverLog": true
+  },
+  { "type": "geckodriver",
+    "port": 9915,
+    "executable": "E:\\intellij2018\\KarateDemo\\src\\test\\java\\driver\\geckodriver.exe",
+    "showDriverLog": false
+  }
+
+]

@@ -7,18 +7,25 @@ Background:
 #  * configure driver = { type: 'geckodriver',port: 9915, executable: 'E:\\intellij2018\\KarateDemo\\src\\test\\java\\driver\\geckodriver.exe'}
   # * configure driver = { type: 'safaridriver' }
   # * configure driver = { type: 'mswebdriver' }
+ * def weburl = "https://classic.crmpro.com/index.html"
 
-Scenario: try to login to github
-    and then do a google search
 
-  Given driver 'https://github.com/login'
-  And driver.input('#login_field', 'hello')
-  And driver.input('#password', 'world')
-  When driver.submit("#login")
+Scenario: Login to CRM
+
+
+  Given driver weburl
+  And driver.maximize()
+  And eval driver.waitUntil("document.readyState == 'complete'")
+  And driver.input("//input[@placeholder='Username']", "hello")
+  And driver.input("//input[@placeholder='Password']", "world")
+  When driver.submit("//input[@class='btn btn-small']")
+  And eval driver.waitUntil("document.readyState == 'complete'")
 #  Then match driver.html('#js-flash-container') contains 'Incorrect username or password.'
   #addded satyank
-  * def bytes = driver.screenshot()
+   * def bytes = driver.screenshot()
   * eval karate.embed(bytes, 'image/png')
+  * print driver.location
+  Then match driver.location ==  weburl + '?e=12'
 
   
 #  Given driver 'https://google.com'
