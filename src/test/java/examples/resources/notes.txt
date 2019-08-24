@@ -1,0 +1,35 @@
+Tags
+
+Feature file
+	examples.tags do not have a separator in the feature file
+		if a separator like a comma is used then while running it will not give correct results
+	examples.tags can be combined with logical AND and OR
+		OR
+			@KarateOptions(examples.tags = {"@regression,@smoke"})
+			@KarateOptions(examples.tags = {"@smoke,@regression"})
+			# This will all feature files having either @regression or @smoke examples.tags
+			# If a feature1 has @r and @s examples.tags and feature 2 has @s tag
+			    #Then if you want to use or then use {"@s,@r"} - this will run both the features having @s
+			
+		AND
+			@KarateOptions(examples.tags={"@regression","@smoke"})
+
+
+	Command line
+	    mvn test -Dcucumber.options="--examples.tags @smokeFC" -Dtest=InfoRunner -DfailIfNoTests=false
+	        # This will run the test and move on to othr tests in the project
+
+	     mvn test -Dcucumber.options="--examples.tags @regression --examples.tags @smokeFC" -Dtest=InfoRunner
+            # and examples.tags
+
+         mvn test -Dcucumber.options="--examples.tags @regression,@smoke" -Dtest=InfoRunner
+            # logical OR
+
+         mvn test -Dcucumber.options="--examples.tags @regression,@smoke --examples.tags ~@ignore" -Dtest=InfoRunner
+            #logical AND and OR
+            #First 2 examples.tags are OR and then the Third TAG is ANDed :-)
+            #In this case the fetaure file having the @ignore tag is not run
+
+            JUNIT5
+            mvn test -Dtest=Junit5DemoTestParallelInfo
+            mvn test -Dtest=Junit5InfoRunner

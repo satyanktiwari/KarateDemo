@@ -2,7 +2,8 @@
 Feature: integration test
 
 Background:
-    * url 'http://localhost:' + 8080
+	* def port = karate.env == 'mock' ? karate.start('cats-mock.feature').port : 8081
+    * url 'http://localhost:' + port
 
 Scenario: Use hardcoded uri
     Given path '/hardcoded'

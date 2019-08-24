@@ -1,8 +1,10 @@
+@Fire
 Feature: sample karate test script
 
 Background:
 * url 'https://jsonplaceholder.typicode.com'
 
+  @UE
 Scenario: get all users and then get the second user by id
 
 Given path 'users'
