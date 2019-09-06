@@ -6,8 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Karate.class)
 
-@KarateOptions(features = "classpath:examples/info/infoFirst.feature",
-                tags = {"@smoke"})
+@KarateOptions(tags = {"@version=2.3,@Spanish=Funcional","~@tagdemo"})
 
 public class TagsRunner {
 

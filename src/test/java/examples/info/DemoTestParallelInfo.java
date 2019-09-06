@@ -3,7 +3,6 @@ package examples.info;
 import com.intuit.karate.KarateOptions;
 import com.intuit.karate.cucumber.CucumberRunner;
 import com.intuit.karate.cucumber.KarateStats;
-import cucumber.api.CucumberOptions;
 import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
 import org.apache.commons.io.FileUtils;
@@ -20,14 +19,11 @@ import static org.junit.Assert.assertTrue;
  *
  * @author pthomas3
  */
-//@CucumberOptions(examples.tags = {"@jankari,info"}) // important: do not use @RunWith(Karate.class) !
-@KarateOptions(tags = {"@煙","@Funcional"}) // important: do not use @RunWith(Karate.class) !
+
+@KarateOptions(tags = {"foo=baz,bar"}) // important: do not use @RunWith(Karate.class) !
 public class DemoTestParallelInfo {
 
-//    @BeforeClass
-//    public static void beforeClass() throws Exception {
-//        TestBase.beforeClass();
-//    }
+
 
     @Test
     public void testParallel() {

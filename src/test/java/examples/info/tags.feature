@@ -12,7 +12,7 @@ Feature: test tags
     * def tags = karate.tags
     * match tags == ['version=2.3', 'foo']
     * def vals = karate.tagValues
-    * match vals == { version: ['2.4'], foo: [] }
+    * match vals == { version: ['2.3'], foo: [] }
 
   @foo=bar
   Scenario: test value tag
@@ -21,9 +21,10 @@ Feature: test tags
     * def vals = karate.tagValues
     * match vals == { version: ['2.3'], foo: ['bar'] }
 
-  @foo=bar,baz
+  @foo=baz,bar
   Scenario: test multi value tag
     * def tags = karate.tags
+    * print tags
     * match tags contains ['version=2.3', 'foo=bar,baz']
     * def vals = karate.tagValues
     * match vals == { version: ['2.3'], foo: ['bar', 'baz'] }
@@ -48,4 +49,4 @@ Feature: test tags
   @region=GB
     Examples:
       | expected |
-      | GB       |
+      | UK       |

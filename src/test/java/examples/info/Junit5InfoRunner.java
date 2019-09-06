@@ -17,19 +17,19 @@ import com.intuit.karate.junit5.Karate;
 
 public class Junit5InfoRunner {
 
-    @Karate.Test
-            Karate testInfoFirst()
-    {
-       return new Karate().feature("infoFirst").relativeTo(getClass());
-    }
+//    @Karate.Test
+//            Karate testInfoFirst()
+//    {
+//       return new Karate().feature("infoFirst").relativeTo(getClass());
+//    }
 
     @Karate.Test
     Karate testInfoSecond(){
-        return new Karate().feature().tags("@smoke").relativeTo(getClass());
+        return new Karate().feature().tags("@煙").relativeTo(getClass());
     }
 
-    @Karate.Test
-    Karate testTags(){
-        return new Karate().tags("@smoke,@regression").relativeTo(getClass());
-    }
+//    @Karate.Test
+//    Karate testTags(){
+//        return new Karate().tags("@smoke,@regression").relativeTo(getClass());
+//    }
 }

@@ -3,8 +3,8 @@
 Feature: runtime metadata
   such as the feature file name and scenario name
 
-  @smoke @煙
-
+#  @smoke
+  @metadata  @Spanish=Funcional
   Scenario: second scenario
     # create a variable and store value of karate.info into the variable
     * def jankari = karate.info

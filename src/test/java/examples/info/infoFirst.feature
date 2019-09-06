@@ -2,7 +2,7 @@
 Feature: runtime metadata
     such as the feature file name and scenario name
 
-@regression @煙 @Funcional
+@Japanese=煙
 Scenario: first scenario
     # create a variable and store value of karate.info into the variable
 * def info = karate.info
