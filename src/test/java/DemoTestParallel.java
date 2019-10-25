@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-@KarateOptions(tags = {"~@ignore"}) // important: do not use @RunWith(Karate.class) !
+@KarateOptions(tags = {"@smoke"}) // important: do not use @RunWith(Karate.class) !
 
 public class DemoTestParallel {
     @Test

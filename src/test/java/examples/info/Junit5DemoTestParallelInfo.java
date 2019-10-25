@@ -1,9 +1,9 @@
 package examples.info;
 
 
-import com.intuit.karate.junit5.Karate;
-import com.intuit.karate.cucumber.CucumberRunner;
-import com.intuit.karate.cucumber.KarateStats;
+import com.intuit.karate.KarateOptions;
+import com.intuit.karate.Results;
+import com.intuit.karate.Runner;
 import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
 import org.apache.commons.io.FileUtils;
@@ -13,29 +13,28 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import examples.info.DemoTestParallelInfo;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 /**
  *
  * @author pthomas3
  */
 
-
+@KarateOptions(tags={"@version=2.3"})
 public class Junit5DemoTestParallelInfo {
 
 
-
-
-
-    @Test
+ @Test
     public void testParallel() {
 
 
         String karateOutputPath = "target/surefire-reports";
-        KarateStats stats = CucumberRunner.parallel(getClass(), 5, karateOutputPath);
+        Results results = Runner.parallel(getClass(),3,karateOutputPath);
         generateReport(karateOutputPath);
-        assertTrue("there are scenario failures", stats.getFailCount() == 0);
+        assertTrue(results.getFailCount()==0,results.getErrorMessages());
     }
 
     private static void generateReport(String karateOutputPath) {

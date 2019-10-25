@@ -28,8 +28,8 @@ public class Junit5InfoRunner {
         return new Karate().feature().tags("@煙").relativeTo(getClass());
     }
 
-//    @Karate.Test
-//    Karate testTags(){
-//        return new Karate().tags("@smoke,@regression").relativeTo(getClass());
-//    }
+    @Karate.Test
+    Karate testTags(){
+        return new Karate().tags("@smoke,@Fire").relativeTo(getClass());
+    }
 }
