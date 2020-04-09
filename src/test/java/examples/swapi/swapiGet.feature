@@ -2,7 +2,7 @@
 Feature: Sample karate demo script to test
 
   Background:
-    * configure headers = {'Content-Type' = 'text/html'}
+    * configure headers = {'Content-Type' : 'text/html'}
 
   Scenario: swapi root API is up
 

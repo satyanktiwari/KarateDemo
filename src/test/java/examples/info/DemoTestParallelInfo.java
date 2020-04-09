@@ -1,8 +1,8 @@
 package examples.info;
 
 import com.intuit.karate.KarateOptions;
-import com.intuit.karate.cucumber.CucumberRunner;
-import com.intuit.karate.cucumber.KarateStats;
+import com.intuit.karate.Results;
+import com.intuit.karate.Runner;
 import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
 import org.apache.commons.io.FileUtils;
@@ -28,9 +28,9 @@ public class DemoTestParallelInfo {
     @Test
     public void testParallel() {
         String karateOutputPath = "target/surefire-reports";
-        KarateStats stats = CucumberRunner.parallel(getClass(), 5, karateOutputPath);
+        Results results = Runner.path("classpath:examples/info").tags("~@ignore").parallel(5);
         generateReport(karateOutputPath);
-        assertTrue("there are scenario failures", stats.getFailCount() == 0);
+        assertTrue(results.getErrorMessages(), results.getFailCount() == 0);
     }
 
     public static void generateReport(String karateOutputPath) {

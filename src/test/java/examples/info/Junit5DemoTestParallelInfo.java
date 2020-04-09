@@ -13,7 +13,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import examples.info.DemoTestParallelInfo;
+//import examples.info.DemoTestParallelInfo;
 
 import static org.junit.jupiter.api.Assertions.*;
 

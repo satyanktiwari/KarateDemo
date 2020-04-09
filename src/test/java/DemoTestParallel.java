@@ -12,6 +12,10 @@ import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+/**
+ * This is an uptodate implementation of parallel execution. With least amount of code
+ * ST 4/10/2020
+ */
 @KarateOptions(tags = {"@smoke"}) // important: do not use @RunWith(Karate.class) !
 
 public class DemoTestParallel {

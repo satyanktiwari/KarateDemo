@@ -1,8 +1,8 @@
 package examples;
 
-import com.intuit.karate.cucumber.CucumberRunner;
-import com.intuit.karate.cucumber.KarateStats;
-import cucumber.api.CucumberOptions;
+import com.intuit.karate.KarateOptions;
+import com.intuit.karate.Results;
+import com.intuit.karate.Runner;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -10,7 +10,6 @@ import java.util.List;
 import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
 import org.apache.commons.io.FileUtils;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -18,20 +17,14 @@ import static org.junit.Assert.*;
  *
  * @author pthomas3
  */
-@CucumberOptions(tags = {"~@ignore"}) // important: do not use @RunWith(Karate.class) !
+@KarateOptions(tags = {"~@ignore"}) // important: do not use @RunWith(Karate.class) !
 public class DemoTestParallel {
-
-//    @BeforeClass
-//    public static void beforeClass() throws Exception {
-//        TestBase.beforeClass();
-//    }
-
     @Test
     public void testParallel() {
         String karateOutputPath = "target/surefire-reports";
-        KarateStats stats = CucumberRunner.parallel(getClass(), 5, karateOutputPath);
+        Results results = Runner.path("classpath:examples/tags/tags.feature").tags("~@ignore").parallel(5);
         generateReport(karateOutputPath);
-        assertTrue("there are scenario failures", stats.getFailCount() == 0);
+        assertTrue(results.getErrorMessages(), results.getFailCount() == 0);
     }
 
     private static void generateReport(String karateOutputPath) {

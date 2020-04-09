@@ -1,8 +1,9 @@
 package examples;
 
-import com.intuit.karate.cucumber.CucumberRunner;
-import com.intuit.karate.cucumber.KarateStats;
-import cucumber.api.CucumberOptions;
+import com.intuit.karate.KarateOptions;
+import com.intuit.karate.Results;
+import com.intuit.karate.Runner;
+
 import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
 import org.apache.commons.io.FileUtils;
@@ -16,24 +17,35 @@ import java.util.List;
 import static org.junit.Assert.assertTrue;
 
 /**
+ *As cucumber support has been deprecated changes have to be made to this file to support the new
+ * methods.
+ * 1. use of KarateOptions
+ * 2. KarateStats has been deprecated
+ * 3. Karate junit4 now supports method chaining
+ * 4. new assertTrue method added today
  *
- * @author pthomas3
  */
-@CucumberOptions(tags = {"~@ignore"}) // important: do not use @RunWith(Karate.class) !
+@KarateOptions(tags = {"~@ignore"}) // important: do not use @RunWith(Karate.class) !
 public class DemoParallelUsersTest {
 
-//    @BeforeClass
-//    public static void beforeClass() throws Exception {
-//        TestBase.beforeClass();
-//    }
+
 
     @Test
     public void testParallel() {
 //        String karateOutputPath = "target/surefire-reports";
-        String karateOutputPath = "target/cucumber-html-reports";
-        KarateStats stats = CucumberRunner.parallel(getClass(), 5, karateOutputPath);
+        String karateOutputPath = "target/surefire-reports";
+//      Cucumber has been deprecated hence removed 4/10/2020
+//        KarateStats stats = CucumberRunner.parallel(getClass(), 5, karateOutputPath);
+//        generateReport(karateOutputPath);
+//        assertTrue("there are scenario failures", stats.getFailCount() == 0);
+
+        Results stats = Runner.path("classpath:examples/tags/tags.feature").tags("~@ignore").parallel(5);
         generateReport(karateOutputPath);
+//        Old Assertion
         assertTrue("there are scenario failures", stats.getFailCount() == 0);
+//        New assertion added on 4/10/2020 from karate documentation not required so commented
+//        assertTrue(stats.getErrorMessages(), stats.getFailCount() == 0);
+
     }
 
     private static void generateReport(String karateOutputPath) {

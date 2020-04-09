@@ -3,8 +3,6 @@ package examples.info;
 import com.intuit.karate.Results;
 import com.intuit.karate.Runner;
 import static org.junit.Assert.*;
-import examples.DemoTestParallel;
-import net.sf.saxon.functions.ConstantFunction;
 import org.junit.Test;
 
 import java.util.Arrays;

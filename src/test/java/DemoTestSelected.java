@@ -12,6 +12,7 @@ public class DemoTestSelected {
         List<String> features = Arrays.asList("classpath:examples/info");
         String karateOutputPath = "target/surefire-reports";
         Results results = Runner.parallel(tags, features, 5, karateOutputPath);
+//        Use the generateReport code from the Demo TestParallel.java
         DemoTestParallel.generateReport(karateOutputPath);
         assertTrue(results.getErrorMessages(), results.getFailCount() == 0);
     }

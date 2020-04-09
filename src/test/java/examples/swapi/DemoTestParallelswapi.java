@@ -1,8 +1,8 @@
 package examples.swapi;
 
-import com.intuit.karate.cucumber.CucumberRunner;
-import com.intuit.karate.cucumber.KarateStats;
-import cucumber.api.CucumberOptions;
+import com.intuit.karate.KarateOptions;
+import com.intuit.karate.Results;
+import com.intuit.karate.Runner;
 import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
 import org.apache.commons.io.FileUtils;
@@ -19,7 +19,7 @@ import static org.junit.Assert.assertTrue;
  *
  * @author pthomas3
  */
-@CucumberOptions(tags = {"~@ignore"}) // important: do not use @RunWith(Karate.class) !
+@KarateOptions(tags = {"~@ignore"}) // important: do not use @RunWith(Karate.class) !
 public class DemoTestParallelswapi {
 
 //    @BeforeClass
@@ -30,9 +30,9 @@ public class DemoTestParallelswapi {
     @Test
     public void testParallel() {
         String karateOutputPath = "target/surefire-reports";
-        KarateStats stats = CucumberRunner.parallel(getClass(), 5, karateOutputPath);
+        Results results = Runner.path("classpath:examples/swapi").tags("~@ignore").parallel(5);
         generateReport(karateOutputPath);
-        assertTrue("there are scenario failures", stats.getFailCount() == 0);
+        assertTrue(results.getErrorMessages(), results.getFailCount() == 0);
     }
 
     private static void generateReport(String karateOutputPath) {
